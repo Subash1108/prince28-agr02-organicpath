@@ -28,4 +28,3 @@ Question 6 is not answerable from my documents: the product must say "I don't kn
 - Question 6 is an intentionally unanswerable question.
 - Every answer must be supported by the relevant official source.
 - If the source documents do not contain an answer, OrganicPath must respond with "I don't know" instead of guessing.
-

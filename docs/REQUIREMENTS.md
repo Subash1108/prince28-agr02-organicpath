@@ -25,4 +25,3 @@
 ## Target adjustment explanation
 
 I changed the record lookup target from 300 ms to 500 ms and the full-answer target from 4 seconds to 5 seconds. These are initial targets for a document-based application, and I will review them after performance testing.
-
