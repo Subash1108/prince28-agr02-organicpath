@@ -44,27 +44,52 @@ The initial API response-time targets are designed for a document-based applicat
 
 ## Run it locally
 
-```bash
+Install dependencies:
+
+```powershell
 uv sync
 ```
 
-Windows:
+Windows environment setup:
 
 ```powershell
 copy .env.example .env
 ```
 
-Start the API when the FastAPI application entry point is implemented:
+Start the API on port 8001:
 
-```bash
-uv run uvicorn organicpath.api.main:create_app --factory --reload
+```powershell
+uv run uvicorn organicpath.api.main:create_app --factory --reload --no-access-log --port 8001
 ```
 
-Then open http://localhost:8000/docs
+Open the API documentation:
+
+http://localhost:8001/docs
+
+Health check:
+
+http://localhost:8001/health
+
+Readiness check:
+
+http://localhost:8001/ready
 
 ## Checks
 
-```bash
+Run automated tests:
+
+```powershell
 uv run pytest
+```
+
+Check code quality:
+
+```powershell
 uv run ruff check .
+```
+
+Format code:
+
+```powershell
+uv run ruff format .
 ```
