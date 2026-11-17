@@ -1,0 +1,23 @@
+[
+  {
+    "id": "001",
+    "title": "NPOP Organic Production Standard",
+    "scheme": "NPOP",
+    "category": "standard",
+    "description": "Reference document for organic production requirements."
+  },
+  {
+    "id": "002",
+    "title": "PGS-India Organic Farming Guidelines",
+    "scheme": "PGS-India",
+    "category": "guideline",
+    "description": "Reference document for domestic organic certification."
+  },
+  {
+    "id": "003",
+    "title": "Organic Turmeric Input Records",
+    "scheme": "NPOP",
+    "category": "input",
+    "description": "Sample record for permitted organic farming inputs."
+  }
+]
