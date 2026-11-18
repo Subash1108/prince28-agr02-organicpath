@@ -30,3 +30,13 @@ a028dde0a177 -> 4e013562c762 (head), add gin index on metadata
 ```
 
 **Status:** PASS – Downgrade and upgrade verified successfully.
+
+Verified results
+Test	Expected	Actual	Status
+First run	20 inserted	20 inserted	PASS
+Second run	20 unchanged	20 unchanged	PASS
+Modified record	1 updated, 19 unchanged	1 updated, 19 unchanged	PASS
+
+records=20 inserted=0 updated=0 unchanged=20
+records=20 inserted=0 updated=0 unchanged=20
+records=20 inserted=0 updated=1 unchanged=19
