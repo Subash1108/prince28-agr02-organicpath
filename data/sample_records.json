@@ -7,7 +7,8 @@
     "topic": "Annual and biennial crop conversion period",
     "conversion_period": "At least 2 years of organic management before sowing",
     "permitted_input": null,
-    "condition": "The requirements of NPOP standards must be met during the conversion period. Source: NPOP Eighth Edition 2024, page 22."
+    "condition": "The requirements of NPOP standards must be met during the conversion period. Source: NPOP Eighth Edition 2024, page 22.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
   },
   {
     "id": "002",
@@ -16,7 +17,8 @@
     "topic": "Perennial crop conversion period",
     "conversion_period": "At least 3 years of organic management before the first harvest",
     "permitted_input": null,
-    "condition": "Applies to perennial plants other than grassland, excluding pastures and meadows. Certification Bodies may decide extensions or reductions in certain cases. Source: NPOP Eighth Edition 2024, page 22."
+    "condition": "Applies to perennial plants other than grassland, excluding pastures and meadows. Certification Bodies may decide extensions or reductions in certain cases. Source: NPOP Eighth Edition 2024, page 22.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
   },
   {
     "id": "003",
@@ -25,7 +27,8 @@
     "topic": "Seeds and planting material",
     "conversion_period": null,
     "permitted_input": "Chemically untreated conventional seeds and planting material when certified organic seeds are unavailable",
-    "condition": "Organic seeds must be used when available. The producer must inform the Certification Body season-wise in the system plan about use of in-conversion or non-organic seeds. GMO seeds and transgenic plant material are prohibited. Source: NPOP Eighth Edition 2024, page 24."
+    "condition": "Organic seeds must be used when available. The producer must inform the Certification Body season-wise in the system plan about use of in-conversion or non-organic seeds. GMO seeds and transgenic plant material are prohibited. Source: NPOP Eighth Edition 2024, page 24.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
   },
   {
     "id": "004",
@@ -42,7 +45,8 @@
       "Green manure",
       "Straw and other mulches"
     ],
-    "condition": "These inputs are listed as permitted when produced on an organic farm unit. Cow urine must be used after controlled fermentation and appropriate dilution. Source: NPOP Eighth Edition 2024, page 95."
+    "condition": "These inputs are listed as permitted when produced on an organic farm unit. Cow urine must be used after controlled fermentation and appropriate dilution. Source: NPOP Eighth Edition 2024, page 95.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
   },
   {
     "id": "005",
@@ -51,7 +55,8 @@
     "topic": "Crop conversion period",
     "conversion_period": "36 months for perennial plants; 24 months for other crops",
     "permitted_input": null,
-    "condition": "Conversion may be reduced to 12 months at the discretion of the Regional Council when previous compliance is verified through available documents. Default organic area exceptions require PGS Secretariat approval on Regional Council recommendation and physical verification. Source: PGS-India Revised Guidelines and Standards, pages 80-81."
+    "condition": "Conversion may be reduced to 12 months at the discretion of the Regional Council when previous compliance is verified through available documents. Default organic area exceptions require PGS Secretariat approval on Regional Council recommendation and physical verification. Source: PGS-India Revised Guidelines and Standards, pages 80-81.",
+    "source_url": "https://www.pgsindia-ncof.gov.in/uploads/operational_manuals/165217720544Revised_PGS_India_Guidlines.pdf"
   },
   {
     "id": "006",
