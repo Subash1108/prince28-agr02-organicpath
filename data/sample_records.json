@@ -52,5 +52,168 @@
     "conversion_period": "36 months for perennial plants; 24 months for other crops",
     "permitted_input": null,
     "condition": "Conversion may be reduced to 12 months at the discretion of the Regional Council when previous compliance is verified through available documents. Default organic area exceptions require PGS Secretariat approval on Regional Council recommendation and physical verification. Source: PGS-India Revised Guidelines and Standards, pages 80-81."
+  },
+  {
+    "id": "006",
+    "standard": "NPOP",
+    "section": "Appendix 1, Section 1",
+    "topic": "Organic crop production plan",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "The producer seeking certification must develop an organic crop production plan. It must describe crops, production practices, inputs with composition and application details, sources of planting material, monitoring procedures, contamination prevention measures and record keeping. Source: APEDA NPOP Appendix 1, page 20.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2025-07/Appendix_1_Crop_Production.pdf"
+  },
+  {
+    "id": "007",
+    "standard": "NPOP",
+    "section": "Appendix 1, Section 2",
+    "topic": "Organic conversion requirements",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "The producer must establish a clear plan for converting the farm to organic management. The plan must cover applicable organic standards and be updated when necessary. All applicable standard requirements must be followed throughout the conversion period. Source: APEDA NPOP Appendix 1, page 21.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2025-07/Appendix_1_Crop_Production.pdf"
+  },
+  {
+    "id": "008",
+    "standard": "NPOP",
+    "section": "Appendix 1, Section 4",
+    "topic": "Landscape and biodiversity management",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Organic farming should contribute positively to the ecosystem. Biodiversity and nature conservation can be supported through extensive grassland, pastures, meadows, orchards, hedges, trees, bushes, diversified field margins, waterways, wetlands and ecologically rich fallow land. Source: APEDA NPOP Appendix 1, pages 22-23.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2025-07/Appendix_1_Crop_Production.pdf"
+  },
+  {
+    "id": "009",
+    "standard": "NPOP",
+    "section": "Appendix 1, Section 5",
+    "topic": "Choice of crops and varieties",
+    "conversion_period": null,
+    "permitted_input": "Certified organic seeds and plant material; chemically untreated conventional seeds and plant material when certified organic material is unavailable",
+    "condition": "Crop species and varieties should be adapted to soil and climatic conditions and resistant to pests and diseases. Genetic diversity should be considered. Genetically engineered seeds, transgenic plants and plant material are prohibited. Source: APEDA NPOP Appendix 1, page 23.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2025-07/Appendix_1_Crop_Production.pdf"
+  },
+  {
+    "id": "010",
+    "standard": "NPOP",
+    "section": "Appendix 1, Section 6",
+    "topic": "Diversity in crop production and management",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Organic farms should maintain sufficient crop diversity to manage pressure from insects, weeds, diseases and other pests while maintaining soil organic matter, fertility, microbial activity and soil health. Crop rotation, preferably including leguminous crops, deep-rooted plants and green manures, supports soil fertility. Source: APEDA NPOP Appendix 1, page 23.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2025-07/Appendix_1_Crop_Production.pdf"
+  },
+  {
+    "id": "011",
+    "standard": "NPOP",
+    "section": "3.1.8(i), 3.1.8(ii), 3.1.8(iii)",
+    "topic": "Crop diversity and crop rotation",
+    "conversion_period": null,
+    "permitted_input": [
+      "Legumes",
+      "Deep-rooted plants",
+      "Green manures",
+      "Organic inputs"
+    ],
+    "condition": "Organic farms should maintain sufficient crop diversity to manage insects, weeds and diseases while maintaining soil fertility, microbial activity and soil health. Crop rotation and green manures help maintain soil fertility. Source: NPOP Eighth Edition 2024, page 25.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "012",
+    "standard": "NPOP",
+    "section": "3.1.9(i), 3.1.9(ii), 3.1.9(viii)",
+    "topic": "Nutrient management",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Biodegradable materials of microbial, plant or animal origin produced on organic farms form the basis of nutrient management. Fertilization should minimize nutrient losses and prevent accumulation of heavy metals and pollutants. Manures containing human excreta are prohibited. Source: NPOP Eighth Edition 2024, page 25.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "013",
+    "standard": "NPOP",
+    "section": "3.1.10(i), 3.1.10(ii), 3.1.10(iii)",
+    "topic": "Preventive pest, disease and weed management",
+    "conversion_period": null,
+    "permitted_input": [
+      "Crop rotation",
+      "Green manures",
+      "Mulching",
+      "Mechanical weed control",
+      "Intercropping"
+    ],
+    "condition": "Organic farming should minimize losses from pests, diseases and weeds. Preventive cultural techniques such as suitable crop rotations, green manures, mulching and mechanical control should be used. Natural enemies of pests should be protected through habitat management. Source: NPOP Eighth Edition 2024, page 27.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "014",
+    "standard": "NPOP",
+    "section": "3.1.10(viii)",
+    "topic": "Prohibition of synthetic pesticides",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "The use of synthetic herbicides, fungicides, growth regulators, synthetic dyes, insecticides and other pesticides is prohibited. Permitted products for plant pest and disease control are listed separately in Annex 3(2). Source: NPOP Eighth Edition 2024, page 27.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "015",
+    "standard": "NPOP",
+    "section": "3.1.11(i), 3.1.11(ii), 3.1.11(iii), 3.1.11(iv)",
+    "topic": "Contamination control and buffer zones",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Measures must be taken to minimize contamination from inside and outside the farm. An adequate buffer zone must prevent unintended contact with prohibited substances from neighbouring conventional farms. Non-organic crops from buffer zones cannot enter the organic supply chain. The Certification Body verifies buffer zones and separation measures during annual inspections. Source: NPOP Eighth Edition 2024, page 28.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "016",
+    "standard": "NPOP",
+    "section": "3.1.12(i), 3.1.12(ii), 3.1.12(iii)",
+    "topic": "Soil and water conservation",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Soil and water resources must be managed sustainably. Measures must prevent soil erosion, soil salination, excessive or improper water use, and pollution of groundwater and surface water. Burning organic matter for land clearing must be minimized, and clearing primary forests is strictly prohibited. Source: NPOP Eighth Edition 2024, page 29.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "017",
+    "standard": "NPOP",
+    "section": "5.2(i)",
+    "topic": "Legal registration of grower groups",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "A Grower Group must be a registered legal entity. Permitted forms include a registered society, a Farmer Producer Organization or Farmer Producer Company incorporated under the Companies Act, 2013, or a cooperative society. Source: NPOP Eighth Edition 2024, page 184.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "018",
+    "standard": "NPOP",
+    "section": "5.2(ii), 5.2(iii), 5.2(iv), 5.2(v)",
+    "topic": "Grower group size and geographical requirements",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Grower Group members must follow similar production systems. Member farms should preferably be in the same or adjacent villages within a maximum radius of 50 km. The group must market its products as a single entity and normally contain a minimum of 25 and maximum of 500 farmers. Source: NPOP Eighth Edition 2024, page 184.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "019",
+    "standard": "NPOP",
+    "section": "5.2(vii), 5.2(viii)",
+    "topic": "Internal Control System and farmer inspections",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Every Grower Group must have an Internal Control System (ICS) to implement NPOP certification requirements. The ICS must conduct internal inspections covering 100% of all farmers in the group twice a year. Source: NPOP Eighth Edition 2024, page 184.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
+  },
+  {
+    "id": "020",
+    "standard": "NPOP",
+    "section": "5.5(ix), 5.5(x), 5.5(xi)",
+    "topic": "Farm diary maintenance and farmer training",
+    "conversion_period": null,
+    "permitted_input": null,
+    "condition": "Every farmer must maintain a farm diary recording farm activities, and the diary must be available for inspection. The ICS is responsible for organizing required training for farmers on organic production and Grower Group certification requirements. Source: NPOP Eighth Edition 2024, page 187.",
+    "source_url": "https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf"
   }
+
+
 ]
