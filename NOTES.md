@@ -91,3 +91,18 @@ Code-change rebuild
 16.2 seconds
 
 Success
+
+
+
+### Docker Compose verification
+
+- PostgreSQL container started and passed its healthcheck.
+- Redis container started and passed its healthcheck.
+- API container started and passed its healthcheck.
+- Migration completed successfully (`Exited (0)`).
+- `/health` returned `{"status":"ok","app":"organicpath","env":"local"}`.
+- `/ready` returned `ready` when the database was available.
+- After stopping PostgreSQL, `/health` remained `ok` and `/ready` returned `not_ready`.
+- After restarting PostgreSQL, `/ready` returned `ready` without restarting the API.
+- After `docker compose down` and `docker compose up -d`, all 20 records remained unchanged.
+- Idempotency verification: `records=20 inserted=0 updated=0 unchanged=20`.
