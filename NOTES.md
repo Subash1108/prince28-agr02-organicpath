@@ -65,3 +65,29 @@ My table contains only 20 records. PostgreSQL estimates that reading all rows di
 **When would it switch to the GIN index?**
 
 When the table becomes larger and the query planner estimates that using the GIN index is cheaper than scanning the entire table.
+
+Docker Build Results
+
+Test
+
+Build Time
+
+Result
+
+Initial Docker build
+
+171.4 seconds
+
+Success
+
+Unchanged rebuild
+
+7.4 seconds
+
+Cached
+
+Code-change rebuild
+
+16.2 seconds
+
+Success
