@@ -106,3 +106,87 @@ Success
 - After restarting PostgreSQL, `/ready` returned `ready` without restarting the API.
 - After `docker compose down` and `docker compose up -d`, all 20 records remained unchanged.
 - Idempotency verification: `records=20 inserted=0 updated=0 unchanged=20`.
+
+
+## D04 · Docker, Compose and tests
+
+### The image
+
+```text
+docker run --rm organicpath:dev id
+uid=999(app) gid=999(app) groups=999(app)
+```
+
+- Size: approximately 300 MB (verify with `docker images organicpath:dev`)
+- First build: 171.4 s
+- Unchanged rebuild: 7.4 s
+- After changing one line of code: 16.2 s
+- Caching: The dependency installation step stayed CACHED because dependency files (`pyproject.toml` and `uv.lock`) had not changed.
+
+### The stack
+
+```text
+API: Up (healthy)
+DB: Up (healthy)
+Redis: Up (healthy)
+Migrate: Exited (0)
+```
+
+First migration:
+```text
+records=20 inserted=20 updated=0 unchanged=0
+```
+
+After down + up:
+```text
+records=20 inserted=0 updated=0 unchanged=20
+```
+
+### Breaking the database on purpose
+
+```text
+db stopped:
+ /health → {"status":"ok","app":"organicpath","env":"local"}
+
+ /ready → {"status":"not_ready","checks":{"database":false}}
+
+db started:
+ /ready → {"status":"ready","checks":{"database":true}}
+```
+
+Why should a load balancer stop sending traffic here but not restart the app?
+
+The readiness check tells the load balancer that the database is unavailable, so it should stop routing traffic to the API. The API process is still alive, so restarting it will not fix the database problem.
+
+### Tests and coverage
+
+```text
+uv run poe test:
+16 passed
+
+uv run poe test-integration:
+7 passed
+
+Coverage TOTAL, unit only:
+83%
+
+Coverage TOTAL, with integration tests:
+92%
+```
+
+Two files or lines my coverage report says are never run, and whether they matter:
+
+- `logging_setup.py` – 54% coverage; additional tests for logging setup would be useful.
+- Other uncovered lines: inspect the coverage report and identify the file and line numbers before deciding whether they matter.
+
+### Clean clone verification
+
+- Created a fresh clone using `git clone .`
+- Built the Docker Compose stack without a project `.venv` or `.env`.
+- API, PostgreSQL and Redis became healthy.
+- Migrations exited successfully with code 0.
+- `/health` returned `status: ok`.
+- `/ready` returned `status: ready` with database true.
+- Removed the temporary clone and restored the original Compose stack.
+
+- Size: 300 MB (target: under 400 MB)
