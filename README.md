@@ -56,7 +56,7 @@ Windows environment setup:
 copy .env.example .env
 ```
 
-Start the API on port 8001:
+Start the API on port 8000:
 
 ```powershell
 uv run uvicorn organicpath.api.main:create_app --factory --reload --no-access-log --port 8001
@@ -64,15 +64,15 @@ uv run uvicorn organicpath.api.main:create_app --factory --reload --no-access-lo
 
 Open the API documentation:
 
-http://localhost:8001/docs
+http://localhost:8000/docs
 
 Health check:
 
-http://localhost:8001/health
+http://localhost:8000/health
 
 Readiness check:
 
-http://localhost:8001/ready
+http://localhost:8000/ready
 
 ## Checks
 
@@ -118,3 +118,10 @@ Stop with `Ctrl+C`, then `docker compose down`. Add `-v` to also delete the data
 | Integration tests (needs `docker compose up`) | `make test-integration` | `uv run poe test-integration` |
 | Coverage report | `make cov` | `uv run poe cov` |
 | Lint and format check | `make lint` | `uv run poe lint` |
+
+
+[![CI](https://github.com/Subash1108/prince28-agr02-organicpath/actions/workflows/ci.yml/badge.svg)](https://github.com/Subash1108/prince28-agr02-organicpath/actions/workflows/ci.yml)
+[![Live](https://img.shields.io/website?url=https%3A%2F%2Forganicpath.onrender.com%2Fhealth&label=live)](https://organicpath.onrender.com/docs)
+[![Uptime (30 days)](https://img.shields.io/uptimerobot/ratio/m804746081-a9a9b9b65dd7fb97ff7e4c9b)](https://organicpath.onrender.com/health)
+
+**Live:** https://organicpath.onrender.com · [API docs](https://organicpath.onrender.com/docs) · [health](https://organicpath.onrender.com/health)

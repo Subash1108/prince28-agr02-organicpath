@@ -190,3 +190,37 @@ Two files or lines my coverage report says are never run, and whether they matte
 - Removed the temporary clone and restored the original Compose stack.
 
 - Size: 300 MB (target: under 400 MB)
+
+## D05 · CI/CD and going live
+
+- Live URL: https://organicpath.onrender.com
+- CI run for pull request 1: https://github.com/Subash1108/prince28-agr02-organicpath/actions
+- First deploy that ran by itself: ([paste CD #2 run link](https://github.com/Subash1108/prince28-agr02-organicpath/actions/runs/44738255984))
+- Merge clicked at __:__ → "Smoke test passed" at __:__ → lead time: ___ min
+
+### Smoke test output from that CD run
+
+```text
+dc3f323bb95ac03141116196b353cfac788652c4  Merge pull request #6 from Subash1108/fix/health-head-monitor
+fa06e46b85d4e9e66312df5e64de8118cc3aaa09  fix: support HEAD requests on health endpoint
+06baee806dc4693a99cd0943018d6c706904e239  Merge pull request #5 from Subash1108/feat/day-05-cd
+888b5da6a3c3391593604deb501c3e4ca4f65335  ci: deploy every green main to render with migrations and smoke test
+```
+
+### Rollback drill
+
+- Rolled back to sha `8c80279445655090478a40fb6e9801214624aac6` : started __:__, smoke passed __:__ (47 seconds)
+- Rolled forward to sha `dc3f323bb95ac03141116196b353cfac788652c4` : 50 seconds
+- During the rollback, the database stayed on the newer schema. Why is that safe here?
+  The rollback skips migrations and changes only the application image.
+  The newer database schema remains unchanged, provided it is backward-compatible with the older application version.
+
+### Where my secrets live
+
+- Neon string: GitHub Secret DATABASE_URL + Render environment. Not in Git, not in the image.
+- Render deploy hook: GitHub Secret RENDER_DEPLOY_HOOK only.
+
+### Monitoring
+
+- UptimeRobot checks /health every 5 minutes; alerts go to my email.
+- One thing that would make my live app faster on its first request: Keep the Render instance warm to reduce cold-start delay.
