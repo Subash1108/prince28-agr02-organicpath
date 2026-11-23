@@ -108,6 +108,34 @@ Success
 - Idempotency verification: `records=20 inserted=0 updated=0 unchanged=20`.
 
 
+## D03 – PostgreSQL
+
+### Database setup
+- Migrated OrganicPath from the initial database setup to PostgreSQL.
+- Configured the PostgreSQL connection using environment variables.
+- Used Neon PostgreSQL for the deployed database.
+
+### Migrations
+- Created two database migrations using Alembic.
+- Created and updated database tables through migrations.
+- Verified that migrations were applied successfully.
+
+### Database loader
+- Implemented `scripts/load_db.py` to load sample records into PostgreSQL.
+- Tested repeated loader execution to verify idempotency.
+
+### Query performance
+- Added database indexes for frequently queried fields.
+- Used `EXPLAIN` to inspect query execution plans.
+
+### Verification
+- Verified database connectivity.
+- Verified API database reads and filtering.
+- Confirmed that the deployed `/ready` endpoint reports database connectivity.
+
+### Learning
+- Understood PostgreSQL, migrations, idempotent data loading, indexes and query execution plans.
+
 ## D04 · Docker, Compose and tests
 
 ### The image
