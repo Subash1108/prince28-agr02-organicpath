@@ -252,3 +252,37 @@ fa06e46b85d4e9e66312df5e64de8118cc3aaa09  fix: support HEAD requests on health e
 
 - UptimeRobot checks /health every 5 minutes; alerts go to my email.
 - One thing that would make my live app faster on its first request: Keep the Render instance warm to reduce cold-start delay.
+
+## D06 · Collecting the corpus
+
+- Start target: NPOP standards + PGS-India manual
+- Collected locally today: 9 files, 353 pages, 3.3 MB (from DATASET.md); PGS-India manual is still missing.
+- Doors used: URL list for eight APEDA downloads; one existing NPOP PDF was registered by hand.
+
+### Licence check
+
+| Source | Licence or terms, in my words | May I show full text in answers? |
+|---|---|---|
+| APEDA | APEDA permits non-commercial internal copying of APEDA-owned documents if notices are retained. Redistribution, modification and other use need written permission. | No; link the original and paraphrase. |
+| PGS-India | Could not verify copyright terms; site policy page was inaccessible. | No; do not collect until terms are confirmed. |
+
+### robots.txt
+
+- APEDA hosts (`npop.apeda.gov.in`, `apeda.gov.in`, `organic.apeda.gov.in`): `User-agent: *`; disallows system, admin, login and search paths. The listed document paths are allowed.
+- PGS-India: `robots.txt` returned an HTML page (HTTP 200), not valid robots rules. I treated the site as blocked and did not request its manual.
+
+### Kill and resume
+
+- Run 1: interrupted after 2 files were downloaded.
+- Run 2: downloaded=6 skipped=3; completed the remaining APEDA entries.
+- Run 3: downloaded=0 skipped=9.
+
+### Capacity (from docs/CAPACITY.md)
+
+- Tokens per page, estimated: 262 (characters divided by four).
+- Full corpus target: 0.39 M tokens, about 1,130 chunks, embedding about Rs 6, vectors about 3 MB.
+- The low estimated embedding cost surprised me most. It depends on approximate token counts, model price and exchange rate.
+
+### One thing that went wrong today, and how I fixed it
+
+- The sandboxed HTTP client could not retrieve robots.txt and correctly blocked the URLs. After separately verifying APEDA robots rules and terms, I reran the approved APEDA-only fetch with network access and resumed from the completed files.

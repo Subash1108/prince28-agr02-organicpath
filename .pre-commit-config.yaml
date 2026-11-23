@@ -20,5 +20,6 @@ repos:
     rev: v1.5.0
     hooks:
       - id: detect-secrets
-        # uv.lock hashes and Alembic revision ids look random but are not secrets
+        args: ["--baseline", ".secrets.baseline"]
+        # Baseline contains audited manifest SHA-256 checksums; keep scanning the manifest.
         exclude: ^(uv\.lock|migrations/versions/.*)$

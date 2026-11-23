@@ -1,0 +1,14 @@
+# Sources for OrganicPath. One row per file to download.
+# Start target: NPOP standards + PGS-India manual
+# Terms and robots.txt must be verified before downloading.
+url,source,licence,title
+https://npop.apeda.gov.in/sites/default/files/2024-10/NPOP_Eight_Edition_2024.pdf,apeda,"APEDA permits non-commercial internal copying of APEDA-owned documents with copyright notices retained; no redistribution, modification or full-text answer display without written permission.",NPOP Eighth Edition 2024
+https://pgsindia-ncof.gov.in/Default/assets/front/PDF/Revised_PGS_India_Guidlines.pdf,pgs_india,"PGS-India copyright and reuse terms could not be verified; permission pending for downloading, storage and display.",PGS-India Operational Manual
+https://npop.apeda.gov.in/sites/default/files/2025-11/NPOP_PROCEDURES_2024.pdf,apeda,"APEDA permits non-commercial internal copying of APEDA-owned documents with copyright notices retained; no redistribution, modification or full-text answer display without written permission.",NPOP Procedures 2024
+https://npop.apeda.gov.in/about-organic-products,apeda,"APEDA site terms: non-commercial internal copying of APEDA-owned documents with notices retained; no redistribution or full-text display without written permission.",About Organic Products
+https://npop.apeda.gov.in/organic-certification-data-under-npop-2024-25,apeda,"APEDA site terms: non-commercial internal copying of APEDA-owned documents with notices retained; no redistribution or full-text display without written permission.",Organic Certification Data 2024-25
+https://organic.apeda.gov.in/Organic-Certification-Bodies,apeda,"APEDA site terms: non-commercial internal copying of APEDA-owned documents with notices retained; no redistribution or full-text display without written permission.",Certification Bodies
+https://organic.apeda.gov.in/npop/,apeda,"APEDA site terms: non-commercial internal copying of APEDA-owned documents with notices retained; no redistribution or full-text display without written permission.",NPOP Overview
+https://apeda.gov.in/tracenet,apeda,"APEDA site terms: non-commercial internal copying of APEDA-owned documents with notices retained; no redistribution or full-text display without written permission.",TraceNet Overview
+https://npop.apeda.gov.in/Revised-NPOP-Standards-2014,apeda,"APEDA permits non-commercial internal copying of APEDA-owned documents with notices retained; historical edition only; no redistribution or full-text display without written permission.",NPOP Standards 2014 (historical)
+https://npop.apeda.gov.in/announcement-cw?field_npop_announcement_type_target_id=60,apeda,"APEDA site terms: non-commercial internal copying of APEDA-owned documents with notices retained; no redistribution or full-text display without written permission.",NPOP Announcements
