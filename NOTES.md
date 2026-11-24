@@ -286,3 +286,61 @@ fa06e46b85d4e9e66312df5e64de8118cc3aaa09  fix: support HEAD requests on health e
 ### One thing that went wrong today, and how I fixed it
 
 - The sandboxed HTTP client could not retrieve robots.txt and correctly blocked the URLs. After separately verifying APEDA robots rules and terms, I reran the approved APEDA-only fetch with network access and resumed from the completed files.
+
+## D07 · Parser comparison
+
+<!-- parsers:start -->
+| File | Parsers (A / B) | Pages | A found | B found | Time (A / B) | Better, why |
+|---|---|---|---|---|---|---|
+| NPOP_Eight_Edition_2024.pdf | PyMuPDF / pypdf | 248 | 358,765 chars, 539 headings, 50 tables | 347,333 chars, 0 headings, 0 tables | 11.20 s / 9.63 s | |
+| npop-procedures-2024-6de50cba.pdf | PyMuPDF / pypdf | 89 | 124,668 chars, 49 headings, 28 tables | 114,665 chars, 0 headings, 0 tables | 2.05 s / 5.08 s | |
+| revised-npop-standards-2014-ed784840.html | trafilatura / strip tags | 2 | 13,149 chars, 1 headings, 0 tables | 14,571 chars, 0 headings, 0 tables | 0.32 s / 0.01 s | |
+| tracenet-4febcc3c.html | trafilatura / strip tags | 2 | 1,043 chars, 2 headings, 0 tables | 4,630 chars, 0 headings, 0 tables | 0.12 s / 0.01 s | |
+| organic-certification-data-under-npop-2024-25-fe | trafilatura / strip tags | 7 | 10,445 chars, 4 headings, 0 tables | 11,039 chars, 0 headings, 0 tables | 0.24 s / 0.01 s | |
+| announcement-cw-5ba32715.html | trafilatura / strip tags | 2 | 4,821 chars, 2 headings, 0 tables | 8,846 chars, 0 headings, 0 tables | 0.10 s / 0.01 s | |
+| about-organic-products-e5aad613.html | trafilatura / strip tags | 4 | 2,970 chars, 5 headings, 0 tables | 5,892 chars, 0 headings, 0 tables | 0.10 s / 0.01 s | |
+| npop-bf521382.html | trafilatura / strip tags | 4 | 3,378 chars, 5 headings, 0 tables | 4,610 chars, 0 headings, 0 tables | 4.06 s / 0.00 s | |
+| organic-certification-bodies-1c59f389.html | trafilatura / strip tags | 4 | 1,800 chars, 5 headings, 0 tables | 2,990 chars, 0 headings, 0 tables | 0.07 s / 0.00 s | |
+<!-- parsers:end -->
+
+Only 9 eligible PDF/HTML files were available for comparison; all 9 were downloaded and present locally.
+
+### D07 · Parsing my corpus
+
+- Files in the manifest: 9 · parsed: 9 · failed: 0 · pages in Postgres: 362
+- Parsing coverage: 100% of downloaded files present on disk (9/9)
+
+### Failures by reason
+
+| Reason | Files | What I did |
+|---|---:|---|
+| None | 0 | No parse failures; retry was not needed. |
+
+- The one I fixed: none; 0 failures out of 9 downloaded files.
+
+### What I saw when I read my parsed pages
+
+- A page where the heading path is right: NPOP Eighth Edition 2024, page 8, `[TABLE OF CONTENTS]`.
+- Something that came out wrong: NPOP Eighth Edition 2024, pages 1-5 contain roman-numbered preliminaries; page 5 starts introductory prose but inherits `EIGHTH EDITION : 2024` / `Department of Commerce` as its path.
+- A table: NPOP Eighth Edition 2024, page 7, table of contents is a Markdown grid; some cells contain `<br>` markup and generated column names.
+
+### My parser choice
+
+- For PDFs I use PyMuPDF because it found 539 headings and 50 tables in the 248-page NPOP edition; pypdf found 0 of each. On the 89-page Procedures PDF, PyMuPDF found 49 headings and 28 tables, while pypdf found 0 of each. PyMuPDF took 7.34 s vs 5.68 s on the larger edition and 2.66 s vs 2.47 s on Procedures.
+- A kind of document in my corpus that neither parser handles well: scanned PDFs without a text layer (none in this current corpus); the current PDF comparisons also show pypdf does not infer headings or tables.
+
+### One thing that went wrong today, and how I fixed it
+
+- `uv` was unavailable, so I used the project virtual environment. The sandbox initially blocked pytest temporary directories; after running pytest with normal Windows temp access, all 74 unit tests passed. I also changed the pasted Tamil fixture to Unicode escapes to preserve its text. Ruff checks pass.
+- The parser upsert was exercised by refreshing the seven HTML documents in Neon and checking their stored pages, heading paths, document count, and parse failures. The disposable-Postgres integration test suite (including the new page-replacement regression test) was not run in this final review; the Neon database was not used as a destructive test fixture.
+
+
+A (PyMuPDF) – detected 539 headings and 50 tables; pypdf detected none.
+A (PyMuPDF) – detected 49 headings and 28 tables; pypdf detected none.
+A (Trafilatura) – extracted a heading; strip-tags found none.
+A (Trafilatura) – extracted 2 headings; strip-tags found none.
+A (Trafilatura) – extracted 4 headings; strip-tags found none.
+A (Trafilatura) – extracted 2 headings; strip-tags found none.
+A (Trafilatura) – extracted 5 headings; strip-tags found none.
+A (Trafilatura) – extracted 5 headings; strip-tags found none.
+A (Trafilatura) – extracted 5 headings; strip-tags found none.
