@@ -344,3 +344,128 @@ A (Trafilatura) – extracted 2 headings; strip-tags found none.
 A (Trafilatura) – extracted 5 headings; strip-tags found none.
 A (Trafilatura) – extracted 5 headings; strip-tags found none.
 A (Trafilatura) – extracted 5 headings; strip-tags found none.
+
+
+English vs Tamil token experiment:
+Hi baseline: 235 tokens
+English message: 243 - 235 = 8 tokens
+Tamil message: 257 - 235 = 22 tokens
+Tamil uses 2.75x more tokens than English.
+
+Question: What price will organic turmeric fetch next season?
+Observed response: "I’m sorry, but I can’t provide that."
+Result: Did not invent a price, but failed to use the required
+"I am not sure" wording.
+
+Off-topic question:
+Who won the 2011 cricket world cup?
+
+Observed response:
+"I'm sorry, but that question is outside the scope of OrganicPath."
+
+Result: PASS — declined in one sentence.
+
+Question: What is NPOP?
+Observed answer: National Programme for Organic Production.
+Result: Relevant answer, but source-document accuracy not verified.
+Provider: Groq (fallback=YES).
+
+Question: What is the conversion period for perennial crops under NPOP?
+Observed answer: At least 36 months (3 years).
+Result: Relevant answer, but source-document accuracy not verified.
+Provider: Gemini (fallback=no).
+
+Fallback test 1:
+Primary model: gemini-no-such-model
+Fallback provider: Groq
+Fallback: YES
+Observed answer: 5 years
+Note: Different models gave inconsistent conversion periods.
+
+Fallback test:
+- 5 requests sent with invalid Gemini model.
+- All requests fell back to Groq successfully.
+- fallback=YES in all responses.
+- Gemini returned HTTP 404 on every request.
+- Circuit breaker did not visibly skip Gemini after 4 failures.
+- Circuit breaker behavior needs investigation.
+
+## Day 08 - Task 5: Break It on Purpose
+
+### Token experiment
+- Hi baseline: 235 tokens
+- English: 243 tokens
+- Tamil: 257 tokens
+- English message tokens: 8
+- Tamil message tokens: 22
+- Tamil/English ratio: 2.75x
+
+### Uncertainty and off-topic tests
+- Organic turmeric price: Did not invent a price, but did not use the required "I am not sure" wording.
+- Cricket question: Correctly declined as outside OrganicPath scope.
+- NPOP answer: Source-document accuracy not yet verified.
+- Perennial conversion period: Conflicting answers observed (3 years and 5 years). Source verification pending.
+
+### Fallback and circuit breaker
+- Five requests tested with invalid Gemini model.
+- All five successfully fell back to Groq.
+- Gemini HTTP 404 occurred on all five attempts.
+- Circuit breaker did not visibly stop Gemini attempts after repeated failures.
+- Restored original Gemini model.
+- Original Gemini model produced ReadTimeout; Groq fallback succeeded.
+
+### Usage and database verification
+- Total calls: 28
+- Errors: 13
+- Fallbacks: 14
+- Input tokens: 3611
+- Output tokens: 2480
+- Estimated cost: Rs. 0.1395
+- SQL verification confirmed Gemini errors and Groq fallback records.
+
+@'
+
+### D08 · LLM gateway
+
+- Primary: gemini-3.8-flash (Gemini) · fallback: openai/gpt-oss-20b (Groq)
+- Laptop NPOP question: first words after 35.09 s, total 35.67 s, tokens in 340 / out 187, cost Rs 0.007752
+- Live URL (second, awake request): pending
+- Day 1 target: under 1.5 s
+
+### Tokens: English against Tamil
+
+| Message | tokens in |
+|---|---:|
+| Hi (baseline: mostly my system prompt) | 235 |
+| English sentence | 243 |
+| Same sentence in Tamil | 257 |
+
+- English message tokens: 8
+- Tamil message tokens: 22
+- Tamil message needs about 2.75 times the tokens of English.
+
+### What the model does without my documents
+
+- Organic turmeric price: It did not invent a price, but did not use the required "I am not sure" wording.
+- Detail that was inconsistent: NPOP perennial conversion period → Gemini answered 3 years and Groq answered 5 years → verified NPOP Eighth Edition section 3.1.3(ii): at least 3 years. Prompt updated with the verified rule.
+- Off-topic cricket question: Correctly declined as outside OrganicPath scope.
+
+### Fallback and circuit breaker
+
+- With the primary broken: provider Gemini (invalid test model), fallback Groq.
+- Three Gemini failures occurred before the fourth request skipped Gemini.
+- Log confirmed: "llm circuit open; skipping provider gemini".
+- After cooldown, half-open probe retried Gemini and failed. Re-opening after that failure still needs confirmation.
+- Original model setting restored to gemini-3.8-flash.
+
+### The bill
+
+- /v1/usage snapshot: calls 28, errors 13, fallbacks 14, cost Rs 0.1395.
+- Average per call in that snapshot: approximately Rs 0.005.
+- Day 1 target: under Rs 0.50.
+
+### One thing that went wrong today, and how I fixed it
+
+- Gemini and Groq gave conflicting NPOP conversion-period answers. Verified the NPOP source and added the correct rule to the system prompt.
+- Circuit breaker did not visibly skip the primary provider initially. Updated the gateway and verified the open-circuit skip log.
+'@ | Add-Content NOTES.md
