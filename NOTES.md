@@ -423,7 +423,7 @@ Fallback test:
 - Estimated cost: Rs. 0.1395
 - SQL verification confirmed Gemini errors and Groq fallback records.
 
-@'
+
 
 ### D08 · LLM gateway
 
@@ -468,4 +468,32 @@ Fallback test:
 
 - Gemini and Groq gave conflicting NPOP conversion-period answers. Verified the NPOP source and added the correct rule to the system prompt.
 - Circuit breaker did not visibly skip the primary provider initially. Updated the gateway and verified the open-circuit skip log.
-'@ | Add-Content NOTES.md
+
+
+### Live Deployment Verification � 2026-11-25
+
+- Deployment: Render service status was Live.
+- Public chat endpoint: `https://organicpath.onrender.com/v1/chat`
+- Public usage endpoint: `https://organicpath.onrender.com/v1/usage`
+- Test question: NPOP perennial crop conversion period.
+- Verified answer: At least 3 years of organic management before first harvest; certification bodies may extend or reduce the period.
+
+| Metric | First request | Second request |
+|---|---:|---:|
+| First words | 4.12 s | 2.96 s |
+| Total response | 4.18 s | 3.03 s |
+| Input tokens | 340 | 340 |
+| Output tokens | 166 | 190 |
+| Cost | Rs 0.007154 | Rs 0.007838 |
+| Provider | Groq | Groq |
+| Fallback | Yes | Yes |
+
+Live `/v1/usage` snapshot:
+- Calls: 49
+- Errors: 23
+- Fallbacks: 25
+- Input tokens: 7,344
+- Output tokens: 4,361
+- Total cost: Rs 0.2198
+
+Observation: Both public requests succeeded through Groq fallback. Gemini primary provider was not successful in these tests. Provider reliability remains an item to investigate.
