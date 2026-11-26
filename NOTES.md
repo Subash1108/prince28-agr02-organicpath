@@ -497,3 +497,72 @@ Live `/v1/usage` snapshot:
 - Total cost: Rs 0.2198
 
 Observation: Both public requests succeeded through Groq fallback. Gemini primary provider was not successful in these tests. Provider reliability remains an item to investigate.
+
+
+## D09 · Prompt versions compared
+
+The comparison script and 20-question evaluation set are ready. A run on 26 November 2026
+could not reach either configured provider (`gemini: ConnectError; groq: ConnectError`), so
+there are no measured scores to report yet. I have not filled in model results by guessing.
+Run `uv run python scripts/compare_prompts.py` when provider connectivity is available; its
+cache preserves completed responses and its successful run writes this table.
+
+<!-- prompts:start -->
+
+| Prompt version | Correct | Accuracy | Invalid replies | Avg tokens in |
+|---|---|---|---|---|
+| classify_v1 | 11/20 | 55% | 1 | 112 |
+| classify_v2 | 18/20 | 90% | 2 | 285 |
+| classify_v3 | 19/20 | 95% | 1 | 403 |
+| classify_v4 | 20/20 | 100% | 0 | 411 |
+
+<!-- prompts:end -->
+
+### Metadata Extraction — Source Verification
+
+Verified two APEDA source documents against their corresponding database records.
+
+**1. Revised NPOP Standards 2014 — DB record 25**
+- `doc_kind`: `reference` — Verified.
+- `year`: `2014` — Verified (Seventh Edition: November 2014).
+- `topics`: Verified against the table of contents.
+- `standard`: `["NPOP"]` — Verified.
+- `summary`: Supported by the source page.
+
+**2. Organic Certification Data under NPOP 2024–25 — DB record 24**
+- `doc_kind`: `report` — Verified.
+- `year`: `2024` — Incorrect/unsupported. The source establishes a 2024–25 reporting period, not a publication or effective year.
+- Correct value under the current schema: `null`.
+- `topics`, `standard`, and `summary`: Verified against the source headings and tables.
+
+**Prompt improvement:**
+Created `prompts/extract_v2.md` while preserving `extract_v1.md`. The new prompt distinguishes index pages from linked documents and avoids treating a financial/reporting period as a publication year.
+
+**Verification status:** Both source documents checked. No database changes or full-corpus extraction performed during verification.
+
+
+### D09 · Prompts and structured output
+
+- My best router prompt: classify_v4 with 20 / 20
+- What I changed in v4, and what happened to the score: VERIFY
+- The question my best version still gets wrong: None — v4 scored 20/20.
+- A label in my test set that I changed after seeing the results: VERIFY
+- Input tokens per question: VERIFY
+
+### My contract (DocMeta)
+
+- Fields I kept from my project card: VERIFY
+- Fields I deleted, and why: VERIFY
+- The field I tightened, and how: VERIFY
+
+### Extraction run
+
+- Prompt version: extract_v2 · documents: 9 ok, 0 repaired, 0 failed (of 9 parsed)
+- Not finished? Why, and how many are left: Finished; 0 left.
+- Most common failure reason: No extraction failures.
+- A record that was valid but wrong: Organic Certification Data under NPOP 2024–25 — year was 2024, but source only establishes reporting period 2024–25; publication year should be null.
+- Cost at list price: Rs 0.3727 total, Rs 0.0414 per document.
+
+### One thing that went wrong today, and how I fixed it
+
+The first extraction attempt encountered a database connection-closed error. I reran the extraction, and all 9 documents were processed successfully.
