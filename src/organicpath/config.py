@@ -34,6 +34,15 @@ class Settings(BaseSettings):
     llm_timeout_seconds: float = 30.0
     usd_inr: float = 95.0  # rupees per US dollar, for cost estimates
     prompts_dir: Path = Path("prompts")
+    # Queue and worker (Day 10). The worker is a second process running the same code.
+    redis_url: str = "redis://localhost:6379"
+    manifest_file: Path = Path("data/manifest.jsonl")
+    admin_token: str = ""
+    worker_in_api: bool = False
+    ingest_concurrency: int = 2
+    ingest_rpm: float = 12.0
+    ingest_job_timeout: int = 60
+    ingest_max_tries: int = 3
 
     @field_validator("database_url")
     @classmethod
