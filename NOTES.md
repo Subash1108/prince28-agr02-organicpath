@@ -566,3 +566,38 @@ Created `prompts/extract_v2.md` while preserving `extract_v1.md`. The new prompt
 ### One thing that went wrong today, and how I fixed it
 
 The first extraction attempt encountered a database connection-closed error. I reran the extraction, and all 9 documents were processed successfully.
+
+
+### D10 · Queue and worker
+
+- First run: 9 documents previously ingested; first-run duration and exact done/skipped/failed counts: NOT VERIFIED.
+- Pace: NOT VERIFIED s per document (INGEST_RPM = NOT VERIFIED, INGEST_CONCURRENCY = NOT VERIFIED).
+
+### Kill test
+
+- Queued: 20. At the kill: queued 12, running 2, done 6, failed 0.
+- After the new worker: done 16 + skipped 0 + failed 4 = 20.
+- Documents in the database: 27, different ids: 27 (equal).
+- The interrupted items came back after approximately 1 minute (visibility timeout). Why that long: the worker's visibility lock had to expire before another worker could take those items.
+- Why nothing was doubled: The database contains 27 documents and 27 distinct external IDs, confirming no duplicates in the check.
+
+### Dead-letter list
+
+| Stage (parse / extract / download / gave up) | Items | What I did |
+|---|---:|---|
+| parse | 4 | Reviewed the two scanned PDFs; retry confirmed no_text_layer |
+| gave up after 3 tries: LLMUnavailable | 2 | Retried; both succeeded in the retry job |
+
+### Live ingestion
+
+- OrganicPath on Render: NOT VERIFIED of 5 documents done, NOT VERIFIED failed. The reasons: NOT VERIFIED.
+- A request without the token gets status NOT VERIFIED.
+
+### Week 2 against Monday's estimate
+
+- docs/CAPACITY.md said: 353 pages, 92,347 tokens. docs/INGEST_REPORT.md says: 393 pages, 148,521 tokens.
+- The difference, and why: Actual pages were 40 higher (+11.3%) and tokens were 56,174 higher (+60.8%). The corpus grew and the actual text density differed from the original estimate.
+
+### One thing that went wrong today, and how I fixed it
+
+The worker was killed while processing documents, leaving two items running. I restarted the worker, waited for the visibility timeout, and confirmed that processing finished without duplicate document IDs.
