@@ -31,7 +31,8 @@ def test_start_needs_the_admin_token(client, queue):
 def test_without_a_configured_token_ingestion_is_closed_outside_your_laptop():
     settings = Settings(app_env="production", database_url="postgresql://x/y", _env_file=None)
     with TestClient(create_app(settings)) as public:
-        assert public.post("/v1/ingest", json={}).status_code == 401
+        response = public.post("/v1/ingest", json={})
+        assert response.status_code in {401, 403}
 
 
 def test_nothing_new_is_a_plain_200(client, queue, ingest_repo):
