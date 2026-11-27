@@ -31,3 +31,8 @@ Dead-letter list by stage: parse 4, gave up after 3 tries 2
 1. Monday estimated 353 pages, but actual ingestion reached 393 pages.
 2. Estimated tokens were 92,347, but actual tokens reached 148,521.
 3. The page estimate was close, but token estimate was lower because the corpus grew and text density varied.
+
+
+Live ingestion job d7894a5110fc4ddb8fae5885169bb45a: 5 queued, 0 done, 5 failed, 0 pages.
+All 5 live failures were caused by APEDA robots.txt download restrictions.
+Unauthenticated POST /v1/ingest returned 401; dead-letter endpoint returned 11 total failed items.
