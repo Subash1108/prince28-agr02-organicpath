@@ -385,9 +385,9 @@ def test_project_source_rows_are_complete_and_keep_pgs_blocked():
         lines = (line for line in handle if line.strip() and not line.lstrip().startswith("#"))
         rows = list(csv.DictReader(lines))
 
-    assert len(rows) == 10
+    assert len(rows) == 30
     assert all(row["url"] and row["source"] and row["licence"] and row["title"] for row in rows)
-    assert len({row["url"] for row in rows}) == 10
+    assert len({row["url"] for row in rows}) == 30
     for row in rows:
         parts = urlsplit(row["url"])
         assert parts.scheme in {"http", "https"} and parts.hostname
